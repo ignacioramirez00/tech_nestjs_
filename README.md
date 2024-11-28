@@ -73,9 +73,9 @@ $ npm run start:dev
 
 ## 4. Test de endpoints
 
-#### ACLARACIÓN IMPORTANTE:
+#### ACLARACIÓN IMPORTANTE:  :bangbang:
 
-A cada ruta que requiera de autenticacion se requiere pasar como headers llamado **fudo_token** con el token
+A cada ruta que requiera de autenticacion se debe pasar un headers llamado **fudo_token** con el token
 correspondiente del usuario.
 
 ### Autenticacion: (POST) `localhost:3000/auth/login`
