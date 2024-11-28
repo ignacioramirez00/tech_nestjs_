@@ -2,6 +2,10 @@
 
 ![](https://www.patferraggi.dev/_next/image?url=%2Fassets%2Fblog%2F2021%2Fmar%2Fnestjs-esta-bueno%2Fcover.jpeg&w=1920&q=75)
 
+## Video presentacion Challenge :mag_right:   
+
+## https://drive.google.com/file/d/1EkySMtNB8cVwCJ7OAIz1ijPObN6AwA61/view?usp=sharing
+
 ## 1 Descripcion
 
 Esta es una aplicacion Backend desarrollada con Node.Js, TypeScript y el framework [Nest](https://nestjs.com/ 'Nest'). La aplicacion se encuentra dockerizada
