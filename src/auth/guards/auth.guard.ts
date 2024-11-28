@@ -32,6 +32,10 @@ export class AuthGuard implements CanActivate {
 
       const manageToken: Authtoken | string = useToken(token);
 
+      if (!token) {
+        throw new UnauthorizedException('Token not found');
+      }
+
       if (manageToken === 'Token expired') {
         throw new UnauthorizedException('Token expired');
       }

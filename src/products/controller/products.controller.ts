@@ -3,7 +3,6 @@ import { ProductsService } from '../service/products.service';
 import { ProductsDto } from '../dto/Products.dto';
 import { ProductEntity } from '../entities/product.entity';
 import { ResultProduct } from '../interface/result_product';
-import { Public } from 'src/auth/decorators/public.decorator';
 
 @Controller('products')
 export class ProductsController {
@@ -18,7 +17,6 @@ export class ProductsController {
   }
 
   @Get()
-  @Public()
   async findProducts(): Promise<ProductEntity[]> {
     return await this.productsService.findProducts();
   }
