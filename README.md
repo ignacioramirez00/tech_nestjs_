@@ -6,9 +6,9 @@
 
 ## https://drive.google.com/file/d/1EkySMtNB8cVwCJ7OAIz1ijPObN6AwA61/view?usp=sharing
 
-## 1 Descripcion
+## 1 Descripción
 
-Esta es una aplicacion Backend desarrollada con Node.Js, TypeScript y el framework [Nest](https://nestjs.com/ 'Nest'). La aplicacion se encuentra dockerizada
+Esta es una aplicación Backend desarrollada con Node.Js, TypeScript y el framework [Nest](https://nestjs.com/ 'Nest'). La aplicación se encuentra dockerizada
 
 ## 2 Instalación
 
@@ -18,7 +18,7 @@ Esta es una aplicacion Backend desarrollada con Node.Js, TypeScript y el framewo
 git clone https://github.com/ignacioramirez00/tech_nestjs_.git
 ```
 
-### 2.2 Configuracion de la aplicación Dockerizada
+### 2.2 Configuración de la aplicación Dockerizada
 
 ![](https://img.icons8.com/?size=100&id=cdYUlRaag9G9&format=png&color=000000)
 
@@ -50,10 +50,10 @@ JWT_EXPIRES=5m
 
 Se hizo uso de [ TypeORM](https://typeorm.io/ ' TypeORM') , un ORM para facilitar las interacciones entre la aplicacion y la base de datos. Mediante el uso de esta herramienta se pudo generar migraciones a partir de los cambios realizados en la entidades de la aplicación
 
-Para el siguiente proyecto se optó que la migracion se corra al comienzo de la generacion de la imagen de node (obviamente dependiendo de la generacion de la base de datos que hace el service: `fudo_db_docker`)
+Para el siguiente proyecto se optó que la migración se corra al comienzo de la generacion de la imagen de node (obviamente dependiendo de la generacion de la base de datos que hace el service: `fudo_db_docker`)
 
 Este tipo de desición se hizo debido a que luego de correr el docker-compose up --build se realiza la ejecucion del programa
-y al instante se ejecuta una post a una API de fudo, resultado en la incorporacion al inicion de informacion proveniente de un json entrante en la base de datos de la aplicacion (punto extra del challenge). Es por eso que para realizar la operacion la migracion ya debe estar creada dentro de la aplicación.
+y al instante se ejecuta una post a una API de fudo, resultado en la incorporacion al inicion de información proveniente de un json entrante en la base de datos de la aplicación (punto extra del challenge). Es por eso que para realizar la operacion la migracion ya debe estar creada dentro de la aplicación.
 
 #### 3°) Ejecución de docker-compose.yml
 
@@ -135,7 +135,7 @@ tener acceso a las demas operaciones. **_esta ruta es publica_** :unlock:
 }
 ```
 
-### Creacion de productos (POST) `localhost:3000/products/create`
+### Creación de productos (POST) `localhost:3000/products/create`
 
 c. Creación de productos: permite crear un producto. Este endpoint requiere autenticación. Bonus: si la creación del producto es asincrónica. **_es una ruta protegida_** :lock:
 
@@ -181,7 +181,7 @@ todos los productos que existen **_es una ruta protegida_** :lock:
 ]
 ```
 
-### Consulta de productos segun el usuario ingresado (GET) `localhost:3000/products/id`
+### Consulta de productos según el usuario ingresado (GET) `localhost:3000/products/id`
 
 e. La diferencia con el anterior es que devuelve segun el usuario que este ingresado **_es una ruta protegida_** :lock:
 
