@@ -22,7 +22,7 @@ Este proyecto utiliza un archivo docker-compose.yml que define dos servicios: `d
 
 #### 1°) Configurar las variables de entorno que necesita la aplicacion para ejecutar
 
-A continuación, procederemos a configurar las variables de entorno del proyecto, para esto hay un archivo llamado .env.example en la raíz del proyecto. Debemos hacer una copia de este archivo y renombrarla a .env. Después procederemos a poner la configuración correcta según las nuestras necesidades
+A continuación, procederemos a configurar las variables de entorno del proyecto, para esto hay un archivo llamado .env.example en la raíz del proyecto. Debemos hacer una copia de este archivo y renombrarla a .env. Luego se debe realizar la configuración correcta según las nuestras necesidades
 
 ```
 PORT=3000
@@ -42,7 +42,7 @@ JWT_EXPIRES=5m
 
 **En mi caso el .env creado en mi local fue exactamente el mismo ya que lo puertos e informacion del docker-compose.yml hicieron uso de esa informacion.**
 
-#### 2°) Ejecucion de migraciones (Explicacion de funcionamiento)
+#### 2°) Ejecucion de migraciones (Explicación de funcionamiento)
 
 Se hizo uso de [ TypeORM](https://typeorm.io/ ' TypeORM') , un ORM para facilitar las interacciones entre la aplicacion y la base de datos. Mediante el uso de esta herramienta se pudo generar migraciones a partir de los cambios realizados en la entidades de la aplicación
 
@@ -51,13 +51,13 @@ Para el siguiente proyecto se optó que la migracion se corra al comienzo de la 
 Este tipo de desición se hizo debido a que luego de correr el docker-compose up --build se realiza la ejecucion del programa
 y al instante se ejecuta una post a una API de fudo, resultado en la incorporacion al inicion de informacion proveniente de un json entrante en la base de datos de la aplicacion (punto extra del challenge). Es por eso que para realizar la operacion la migracion ya debe estar creada dentro de la aplicación.
 
-#### 3°) Ejecucion de docker-compose.yml
+#### 3°) Ejecución de docker-compose.yml
 
 ```
 docker-compose up --build
 ```
 
-## 3. Ejecucion de la aplicacion
+## 3. Ejecución de la aplicacion
 
 ###### En modo desarrollo:
 
@@ -194,7 +194,7 @@ e. La diferencia con el anterior es que devuelve segun el usuario que este ingre
 }
 ```
 
-### Sincronizacion de productos con una api externa (hecho)
+### Sincronización de productos con una api externa (hecho)
 
 la lista de productos almacenada podrá sincronizarse con una API de productos externa, agregando los productos que la misma retorna al listado inicial, al momento de correr la aplicación por primera vez. Esta API externa fue elaborada por el equipo de Fudo para este challenge y tiene un solo endpoint, el cuál devuelve un listado de productos con un id y un nombre. A continuación, te dejamos un CURL de ejemplo:
 
@@ -203,9 +203,7 @@ curl -X POST -H "Content-Type: application/json"
 https://23f0013223494503b54c61e8bee1190c.api.mockbin.io/
 ```
 
-Como dije anteriormente esta operacion se va ejecutar la primera vez que se corra el programa
-por medio de una operacion que al detectar la inicializacion de un servicio, realizará de forma automatica
-la operacion de sincronización.
+Como dije anteriormente esta operacion se va ejecutar la primera vez que se corra el programa por medio de una operacion que al detectar la inicializacion de un servicio, realizará de forma automatica la operacion de sincronización.
 
 ## 5. Test unitarios
 
@@ -217,7 +215,7 @@ npm run test
 
 De esta forma el programa va detectar los archivos .spec.ts para ejecutar las operaciones.
 
-**En este caso realicé una prueba unitaria para un metodo del servicio de usuario, donde consiste
-detectar el metodo registeruser. Mediante dos casos de test, uno "final feliz" y otro de error. Consiste determinar
+**En este caso realicé una prueba unitaria para un metodo del servicio de usuario, donde consiste en 
+detectar el metodo registeruser. Mediante dos casos de test, uno "final feliz" y otro de error. Se determina
 el comportamiento de register ante la ausencia del email o la existencia del mismo. Por lo tanto con el uso de mock y
-simulacion del modulo se puede determinar como actua el caso.**
+simulacion del modulo se puede determinar como actua el caso de test.**
