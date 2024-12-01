@@ -81,7 +81,7 @@ export class ProductsService implements OnModuleInit {
     try {
       const result: ProductEntity[] = await this.productRepository
         .createQueryBuilder('product')
-        .select(['product.id', 'product.name']) // Selecciona únicamente las columnas necesarias
+        .select(['product.id', 'product.name'])
         .getMany();
 
       if (result.length === 0) {
@@ -106,7 +106,12 @@ export class ProductsService implements OnModuleInit {
           userCreateProductFkId: id,
         })
         .getMany();
-
+      if (result.length === 0) {
+        throw new ErrorManager({
+          type: 'NOT_FOUND',
+          message: 'Products not found',
+        });
+      }
       const formattedResult: ResultProduct = {
         user: {
           username: user.username,
@@ -120,7 +125,9 @@ export class ProductsService implements OnModuleInit {
       };
 
       return formattedResult;
-    } catch (error) {}
+    } catch (error) {
+      throw ErrorManager.createSignetureError(error.message);
+    }
   }
 
   public async existsProductByNameSyncronized(id: number): Promise<boolean> {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UserService } from '../../user/services/user.service';
-import * as bycrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { UserEntity } from '../../user/entities/user.entity';
 import { envs } from '../../config/envs';
@@ -21,25 +21,30 @@ export class AuthService {
         value: username,
       });
       if (userUsername) {
-        const result = await bycrypt.compare(password, userUsername.password);
+        const result = await bcrypt.compare(password, userUsername.password);
         if (result) {
           return userUsername;
         } else {
           throw new ErrorManager({
             type: 'UNAUTHORIZED',
-            message: 'Invalid credentials',
+            message: 'Invalid password',
           });
         }
       }
       if (userEmail) {
-        const result = await bycrypt.compare(password, userEmail.password);
+        const result = await bcrypt.compare(password, userEmail.password);
         if (result) {
           return userEmail;
+        } else {
+          throw new ErrorManager({
+            type: 'UNAUTHORIZED',
+            message: 'Invalid password',
+          });
         }
       } else {
         throw new ErrorManager({
           type: 'UNAUTHORIZED',
-          message: 'Invalid credentials',
+          message: 'Invalid credentials - not exists user',
         });
       }
     } catch (error) {
@@ -61,11 +66,11 @@ export class AuthService {
 
   async generateToken(user: UserEntity): Promise<any> {
     try {
-      const userId = await this.userService.findById(user.id);
+      //const userId = await this.userService. evito ir de nuevo a la BD
       const payload = {
-        id: userId.id,
-        username: userId.username,
-        email: userId.email,
+        id: user.id,
+        username: user.username,
+        email: user.email,
       };
       return {
         access_token: this.signJWT({
