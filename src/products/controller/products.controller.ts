@@ -8,7 +8,7 @@ import { ResultProduct } from '../interface/result_product';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Post('create')
+  @Post()
   async create(
     @Body() product: ProductsDto,
     @Request() req,
@@ -21,7 +21,7 @@ export class ProductsController {
     return await this.productsService.findProducts();
   }
 
-  @Get('id')
+  @Get('by-user')
   async findProductByUser(@Request() req): Promise<ResultProduct> {
     return await this.productsService.findProductByUser(req.user.id);
   }
