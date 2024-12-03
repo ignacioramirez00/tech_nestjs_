@@ -135,7 +135,7 @@ tener acceso a las demas operaciones. **_esta ruta es publica_** :unlock:
 }
 ```
 
-### Creación de productos (POST) `localhost:3000/products/create`
+### Creación de productos (POST) `localhost:3000/products`
 
 c. Creación de productos: permite crear un producto. Este endpoint requiere autenticación. Bonus: si la creación del producto es asincrónica. **_es una ruta protegida_** :lock:
 
@@ -181,7 +181,7 @@ todos los productos que existen **_es una ruta protegida_** :lock:
 ]
 ```
 
-### Consulta de productos según el usuario ingresado (GET) `localhost:3000/products/id`
+### Consulta de productos según el usuario ingresado (GET) `localhost:3000/products/by-user`
 
 e. La diferencia con el anterior es que devuelve segun el usuario que este ingresado **_es una ruta protegida_** :lock:
 
